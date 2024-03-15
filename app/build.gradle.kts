@@ -47,10 +47,20 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    viewBinding {
+        this.enable = true
+    }
 }
 
 dependencies {
-
+    implementation ("com.facebook.android:facebook-android-sdk:latest.release")
+    implementation ("com.miui.referrer:homereferrer:1.0.0.6")
+    implementation("com.google.errorprone:error_prone_annotations:2.23.0")
+    implementation ("com.google.android.gms:play-services-ads-identifier:18.0.1")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.appsflyer:af-android-sdk:6.12.4")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("com.onesignal:OneSignal:[5.1.2, 5.1.2]")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-compose:1.8.2")
