@@ -9,7 +9,6 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.webkit.CookieManager
 import android.webkit.PermissionRequest
@@ -24,9 +23,9 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import game.wheelsuper.wheelslots.databinding.ActivityGameBonusBinding
 
-class BetBonus : AppCompatActivity() {
-    private var theloadmess: ValueCallback<Array<Uri>>? = null
-    private var egyptLaucher: ActivityResultLauncher<Intent>? = null
+class JIjihuqwrwqrhijwqiri : AppCompatActivity() {
+    private var qwijrjiqwjirqwr: ValueCallback<Array<Uri>>? = null
+    private var jiqwrjiqwriqwir2: ActivityResultLauncher<Intent>? = null
 
     lateinit var jfqworjuqwjri: ActivityGameBonusBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,11 +34,10 @@ class BetBonus : AppCompatActivity() {
         setContentView(jfqworjuqwjri.root)
         CookieManager.getInstance().setAcceptCookie(true)
         CookieManager.getInstance().setAcceptThirdPartyCookies(jfqworjuqwjri.gameBonus,true)
-        fijqwhurqjiwri2()
-        jiqwrjqiwrjiwi2()
-        megasutijqwi(this)
-        fijqwihjrjqwiirqwuhrh2()
-        Log.d("fkqwjrio",intent.getStringExtra("url").toString())
+        ijqwrqwiriiqwiriwj2()
+        qwjirjiqwrijwqirji()
+        uhqwirhuqwr7t2ruhawr(this)
+        qwiru82urjaiwriajirji()
         intent.getStringExtra("url")?.let { jfqworjuqwjri.gameBonus.loadUrl(it) }
 
     }
@@ -50,7 +48,7 @@ class BetBonus : AppCompatActivity() {
         else
             super.onBackPressed()
     }
-   fun fijqwhurqjiwri2(){
+   fun ijqwrqwiriiqwiriwj2(){
        jfqworjuqwjri.gameBonus.settings.apply {
            javaScriptEnabled=true
            domStorageEnabled=true
@@ -64,7 +62,7 @@ class BetBonus : AppCompatActivity() {
            allowContentAccess = true
        }
    }
-    fun jiqwrjqiwrjiwi2(){
+    fun qwjirjiqwrijwqirji(){
         CookieManager.allowFileSchemeCookies()
         CookieManager.getInstance().acceptThirdPartyCookies(jfqworjuqwjri.gameBonus)
         jfqworjuqwjri.gameBonus.webViewClient= object : WebViewClient() {
@@ -76,33 +74,33 @@ class BetBonus : AppCompatActivity() {
             }
 
             override fun shouldOverrideUrlLoading(
-                view: WebView?,
+                qwijrhqwriqwrij: WebView?,
                 request: WebResourceRequest?
             ): Boolean {
-                val url = request?.url.toString()
-                if (url.startsWith("http")) {
-                    view?.loadUrl(url)
+                val uhwqrwqruhwurhuwr = request?.url.toString()
+                if (uhwqrwqruhwurhuwr.startsWith("http")) {
+                    qwijrhqwriqwrij?.loadUrl(uhwqrwqruhwurhuwr)
                 } else {
                     try {
                         if (ContextCompat.checkSelfPermission(
-                                this@BetBonus.applicationContext,
+                                this@JIjihuqwrwqrhijwqiri.applicationContext,
                                 android.Manifest.permission.CAMERA
                             ) != PackageManager.PERMISSION_GRANTED
                         ) {
                             ActivityCompat.requestPermissions(
-                                this@BetBonus,
+                                this@JIjihuqwrwqrhijwqiri,
                                 arrayOf(android.Manifest.permission.CAMERA),
                                 201
                             )
                         } else {
                             try {
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                                this@BetBonus.startActivity(intent)
+                                val uhqwirhuqwhrhqwur = Intent(Intent.ACTION_VIEW, Uri.parse(uhwqrwqruhwurhuwr))
+                                this@JIjihuqwrwqrhijwqiri.startActivity(uhqwirhuqwhrhqwur)
                             } catch (e: ActivityNotFoundException) {
-                                val intent = Intent(Intent.ACTION_GET_CONTENT,Uri.parse(url))
-                                intent.addCategory(Intent.CATEGORY_OPENABLE)
-                                intent.type = "*/*"
-                                this@BetBonus.startActivity(intent)
+                                val qwuhruqrqhwuru = Intent(Intent.ACTION_GET_CONTENT,Uri.parse(uhwqrwqruhwurhuwr))
+                                qwuhruqrqhwuru.addCategory(Intent.CATEGORY_OPENABLE)
+                                qwuhruqrqhwuru.type = "*/*"
+                                this@JIjihuqwrwqrhijwqiri.startActivity(qwuhruqrqhwuru)
                             }
 
                         }
@@ -117,28 +115,28 @@ class BetBonus : AppCompatActivity() {
             }
         }
     }
-    private fun megasutijqwi(appCompatActivity: AppCompatActivity) {
-        egyptLaucher = appCompatActivity.activityResultRegistry.register(
+    private fun uhqwirhuqwr7t2ruhawr(appCojiqwrqwjirjiqwrpatActivity: AppCompatActivity) {
+        jiqwrjiqwriqwir2 = appCojiqwrqwjirjiqwrpatActivity.activityResultRegistry.register(
             "UploadFile",
             ActivityResultContracts.StartActivityForResult()
-        ) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                if (result.data != null) {
-                    val uri: Uri? = result.data?.data
-                    if (uri != null && theloadmess != null) {
-                        theloadmess?.onReceiveValue(arrayOf(uri))
-                        theloadmess = null
+        ) { ijqwrhuquwrhquwru ->
+            if (ijqwrhuquwrhquwru.resultCode == Activity.RESULT_OK) {
+                if (ijqwrhuquwrhquwru.data != null) {
+                    val uqwrhuqwhrhu2: Uri? = ijqwrhuquwrhquwru.data?.data
+                    if (uqwrhuqwhrhu2 != null && qwijrjiqwjirqwr != null) {
+                        qwijrjiqwjirqwr?.onReceiveValue(arrayOf(uqwrhuqwhrhu2))
+                        qwijrjiqwjirqwr = null
                     }
                 }
             }
             else
             {
-                theloadmess?.onReceiveValue(null)
-                theloadmess = null
+                qwijrjiqwjirqwr?.onReceiveValue(null)
+                qwijrjiqwjirqwr = null
             }
         }
     }
-    fun fijqwihjrjqwiirqwuhrh2(){
+    fun qwiru82urjaiwriajirji(){
         jfqworjuqwjri.gameBonus.webChromeClient = object : WebChromeClient() {
             override fun onPermissionRequest(request: PermissionRequest?) {
                 if (request?.resources?.contains("android.permission.CAMERA") == true || request?.resources?.contains(
@@ -146,12 +144,12 @@ class BetBonus : AppCompatActivity() {
                     ) == true
                 ) {
                     if (ContextCompat.checkSelfPermission(
-                            this@BetBonus,
+                            this@JIjihuqwrwqrhijwqiri,
                             Manifest.permission.CAMERA
                         ) != PackageManager.PERMISSION_GRANTED
                     ) {
                         ActivityCompat.requestPermissions(
-                            this@BetBonus,
+                            this@JIjihuqwrwqrhijwqiri,
                             arrayOf(Manifest.permission.CAMERA),
                             201
                         )
@@ -163,56 +161,56 @@ class BetBonus : AppCompatActivity() {
                 }
             }
             override fun onShowFileChooser(
-                webView: WebView?, filePathCallback: ValueCallback<Array<Uri>>?,
-                fileChooserParams: FileChooserParams?
+                iqjwrqwjirjiqwr: WebView?, filePathCallback: ValueCallback<Array<Uri>>?,
+                qijwriqwhruwhqrriw: FileChooserParams?
             ): Boolean {
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                     val zaresheniegkdfgkdfgjdf = ContextCompat.checkSelfPermission(
-                        this@BetBonus,
+                        this@JIjihuqwrwqrhijwqiri,
                         android.Manifest.permission.READ_MEDIA_IMAGES
                     )
                     if (zaresheniegkdfgkdfgjdf != PackageManager.PERMISSION_GRANTED) {
                         ActivityCompat.requestPermissions(
-                            this@BetBonus, arrayOf(android.Manifest.permission.READ_MEDIA_IMAGES), 300
+                            this@JIjihuqwrwqrhijwqiri, arrayOf(android.Manifest.permission.READ_MEDIA_IMAGES), 300
                         )
                     }
                     else
                     {
-                        if (theloadmess != null) {
-                            theloadmess?.onReceiveValue(null)
-                            theloadmess = null
+                        if (qwijrjiqwjirqwr != null) {
+                            qwijrjiqwjirqwr?.onReceiveValue(null)
+                            qwijrjiqwjirqwr = null
                         }
-                        theloadmess = filePathCallback
-                        val intent = Intent(Intent.ACTION_GET_CONTENT)
-                        intent.addCategory(Intent.CATEGORY_OPENABLE)
-                        intent.type = "*/*"
-                        egyptLaucher?.launch(Intent.createChooser(intent, "File Browser"))
+                        qwijrjiqwjirqwr = filePathCallback
+                        val yiwqrhuqhwrhuwr2 = Intent(Intent.ACTION_GET_CONTENT)
+                        yiwqrhuqhwrhuwr2.addCategory(Intent.CATEGORY_OPENABLE)
+                        yiwqrhuqhwrhuwr2.type = "*/*"
+                        jiqwrjiqwriqwir2?.launch(Intent.createChooser(yiwqrhuqhwrhuwr2, "File Browser"))
                         return true
                     }
                 } else {
-                    val razresheniekgfkgdkf =
+                    val uqwrqwijrjqwirwqjrii2 =
                         ContextCompat.checkSelfPermission(
-                            this@BetBonus,
+                            this@JIjihuqwrwqrhijwqiri,
                             android.Manifest.permission.READ_EXTERNAL_STORAGE
                         )
-                    if (razresheniekgfkgdkf != PackageManager.PERMISSION_GRANTED) {
+                    if (uqwrqwijrjqwirwqjrii2 != PackageManager.PERMISSION_GRANTED) {
                         ActivityCompat.requestPermissions(
-                            this@BetBonus, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                            this@JIjihuqwrwqrhijwqiri, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
                             200
                         )
                     }
                     else
                     {
-                        if (theloadmess != null) {
-                            theloadmess?.onReceiveValue(null)
-                            theloadmess = null
+                        if (qwijrjiqwjirqwr != null) {
+                            qwijrjiqwjirqwr?.onReceiveValue(null)
+                            qwijrjiqwjirqwr = null
                         }
-                        theloadmess = filePathCallback
-                        val intent = Intent(Intent.ACTION_GET_CONTENT)
-                        intent.addCategory(Intent.CATEGORY_OPENABLE)
-                        intent.type = "*/*"
-                        egyptLaucher?.launch(Intent.createChooser(intent, "File Browser"))
+                        qwijrjiqwjirqwr = filePathCallback
+                        val qiwrjqwrijiqwrjiqwr2 = Intent(Intent.ACTION_GET_CONTENT)
+                        qiwrjqwrijiqwrjiqwr2.addCategory(Intent.CATEGORY_OPENABLE)
+                        qiwrjqwrijiqwrjiqwr2.type = "*/*"
+                        jiqwrjiqwriqwir2?.launch(Intent.createChooser(qiwrjqwrijiqwrjiqwr2, "File Browser"))
                         return true
                     }
 

